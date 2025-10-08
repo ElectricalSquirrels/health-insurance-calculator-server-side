@@ -1,0 +1,23 @@
+{
+  "name": "health-insurance-calculator-server-side",
+  "version": "1.0.0",
+  "description": "Health insurance risk calculator which determines the risk associated with insuring a new customer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElectricalSquirrels/health-insurance-calculator-server-side.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElectricalSquirrels/health-insurance-calculator-server-side/issues"
+  },
+  "homepage": "https://github.com/ElectricalSquirrels/health-insurance-calculator-server-side#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
