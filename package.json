@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Health insurance risk calculator which determines the risk associated with insuring a new customer",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+"scripts": {
+  "start": "node server.js",
+  "test": "echo \"No test specified\" && exit 0"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ElectricalSquirrels/health-insurance-calculator-server-side.git"
