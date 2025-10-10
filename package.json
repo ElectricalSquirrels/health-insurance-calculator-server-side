@@ -2,7 +2,7 @@
   "name": "health-insurance-calculator-server-side",
   "version": "1.0.0",
   "description": "Health insurance risk calculator which determines the risk associated with insuring a new customer",
-  "main": "index.js",
+  "main": "server.js",
 "scripts": {
   "start": "node server.js",
   "test": "echo \"No test specified\" && exit 0"
