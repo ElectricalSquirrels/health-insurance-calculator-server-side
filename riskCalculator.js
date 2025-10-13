@@ -1,21 +1,25 @@
 // server/riskCalculator.js
 
+// Convert height in feet and inches to meters (for height calculation)
 function toMeters(feet, inches) {
   const totalInches = (feet * 12) + inches;
   return totalInches * 0.0254;
 }
 
+// Calculate BMI given weight in pounds and height in meters
 function calculateBMI(weightLbs, heightMeters) {
   const weightKg = weightLbs * 0.453592;
   return weightKg / (heightMeters * heightMeters);
 }
 
+// Calculate BMI category and points
 function categorizeBMI(bmi) {
   if (bmi < 25) return { category: "normal", points: 0 };
   if (bmi < 30) return { category: "overweight", points: 30 };
   return { category: "obese", points: 75 };
 }
 
+// Calculate blood pressure category and points
 function categorizeBloodPressure(systolic, diastolic) {
   if (systolic < 120 && diastolic < 80) return { category: "normal", points: 0 };
   if (systolic < 130 && diastolic < 80) return { category: "elevated", points: 15 };
@@ -24,6 +28,7 @@ function categorizeBloodPressure(systolic, diastolic) {
   return { category: "crisis", points: 100 };
 }
 
+// Calculate age category points
 function categorizeAge(age) {
   if (age < 30) return 0;
   if (age < 45) return 10;
@@ -31,6 +36,7 @@ function categorizeAge(age) {
   return 30;
 }
 
+// Calculate family history points
 function calculateFamilyHistoryPoints(familyHistory) {
   const conditions = ["diabetes", "cancer", "alzheimers"];
   return familyHistory.reduce((sum, c) => {
@@ -39,6 +45,7 @@ function calculateFamilyHistoryPoints(familyHistory) {
   }, 0);
 }
 
+// Validate user input values for age, height, weight, and blood pressure
 function validateInput(age, feet, inches, weight, systolic, diastolic) {
   const errors = [];
   if (age <= 0 || age > 120) errors.push("Age must be between 1 and 120.");
@@ -50,6 +57,7 @@ function validateInput(age, feet, inches, weight, systolic, diastolic) {
   return errors;
 }
 
+// Validate and calculate risk based on user input
 function calculateRisk(user) {
   const { age, heightFt, heightIn, weight, systolic, diastolic, familyHistory } = user;
   const validationErrors = validateInput(age, heightFt, heightIn, weight, systolic, diastolic);
@@ -57,6 +65,7 @@ function calculateRisk(user) {
     return { error: validationErrors.join(" ") };
   }
 
+  // Perform total calculations
   const heightM = toMeters(heightFt, heightIn);
   const bmi = calculateBMI(weight, heightM);
   const bmiInfo = categorizeBMI(bmi);
@@ -66,12 +75,14 @@ function calculateRisk(user) {
 
   const totalScore = agePoints + bmiInfo.points + bpInfo.points + familyPoints;
 
+  // Determine total risk category
   let riskCategory;
   if (totalScore <= 20) riskCategory = "low risk";
   else if (totalScore <= 50) riskCategory = "moderate risk";
   else if (totalScore <= 75) riskCategory = "high risk";
   else riskCategory = "uninsurable";
 
+  // Return detailed results
   return {
     bmi: bmi.toFixed(1),
     bmiCategory: bmiInfo.category,

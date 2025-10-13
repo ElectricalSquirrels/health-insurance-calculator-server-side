@@ -1,11 +1,38 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azure Test</title>
+  <title>TEST FOR API</title>
 </head>
 <body>
-  <h1>Testing for Azure</h1>
+  <h1>Risk API Test</h1>
+  <button id="send">Send Test Request</button>
+  <!-- Displays JSON results from the API -->
+  <pre id="out"></pre>
+
+  <!-- Client-side JavaScript -->
+  <script>
+    // Finds button by id 'send'
+    document.getElementById('send').onclick = async () => {
+      // Calls API using fetch
+      const res = await fetch('http://localhost:4000/api/risk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          age: 30,
+          heightFt: 5,
+          heightIn: 8,
+          weight: 160,
+          systolic: 125,
+          diastolic: 82,
+          familyHistory: ['diabetes']
+        })
+      });
+      // Wait for response and parse JSON
+      const data = await res.json();
+      // Takes <pre> element and replaces its text with the result
+      document.getElementById('out').textContent = JSON.stringify(data);
+    };
+  </script>
 </body>
 </html>
