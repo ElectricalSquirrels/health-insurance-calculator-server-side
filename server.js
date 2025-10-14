@@ -6,7 +6,7 @@ const path = require('path');
 
 // Initialize Express app
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Main endpoint: POST /api/risk
 // - This endpoint receives user data (age, height, weight, BP, family history)
 // - Then returns the calculated risk as JSON to the client
-app.post("/api/risk", (req, res) => {
+  app.post("/api/calculate-risk", (req,res) => {
   try {
     // Extract data from request body, with fallback to empty object if undefined
     const b = req.body || {};
