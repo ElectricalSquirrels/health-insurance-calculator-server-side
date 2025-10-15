@@ -15,7 +15,7 @@
     // Finds button by id 'send'
     document.getElementById('send').onclick = async () => {
       // Calls API using fetch
-      const res = await fetch('http://localhost:3000/api/risk', {
+      const res = await fetch('http://localhost:3000/api/calculate-risk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
