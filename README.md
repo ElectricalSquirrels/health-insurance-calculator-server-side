@@ -1,5 +1,5 @@
 # 💊 Health-insurance-calculator-server-side
-A Node.js/Express API server that performs health insurance risk calculations based on customer age, BMI, blood pressure, and family health history. This server handles all business logic and calculations for the health insurance risk calculator application.
+A Node.js/Express API server that performs health insurance risk calculations based on customer age, BMI, blood pressure, and family health history. This server handles all calculations for the health insurance risk calculator application.
 
 
 Here is the link: https://health-insurance-calc-server-side-es-bncefygkbneugdbd.canadacentral-01.azurewebsites.net/
