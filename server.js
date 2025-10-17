@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json()); // Parses json request bodies
+// Simple health check
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', uptime: process.uptime() });
+});
 // Test route to verify server is running
 app.use(express.static(path.join(__dirname, 'public')));
 
