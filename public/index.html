@@ -12,10 +12,12 @@
 
   <!-- Client-side JavaScript -->
   <script>
+    const API_BASE = 'https://risk-calculator-api-d6dea9a7ehcxc2fw.canadacentral-01.azurewebsites.net';
+
     // Finds button by id 'send'
     document.getElementById('send').onclick = async () => {
       // Calls API using fetch
-      const res = await fetch('http://localhost:3000/api/calculate-risk', {
+      const res = await fetch(`${API_BASE}/api/calculate-risk`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

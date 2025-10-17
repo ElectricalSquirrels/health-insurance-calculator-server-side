@@ -58,5 +58,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Listens for incoming requests on the defined PORT.
 app.listen(PORT, () => {
-  console.log(`Risk API listening on http://localhost:${PORT}`);
+  console.log(`Risk API listening on port ${PORT}`);
 });
